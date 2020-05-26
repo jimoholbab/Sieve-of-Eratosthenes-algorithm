@@ -1,0 +1,23 @@
+#
+import math
+
+print ("Enter the upper limit number")
+upper_limit = int(input())
+
+primes = []
+for i in range(2,upper_limit+1):
+    primes.append(i)
+
+least = 2
+#from 2 to sqrt(number)
+while(least <= int(math.sqrt(upper_limit))):
+    #if least is in list, then we got to delete its multiples
+    if least in primes:
+        #Repeat will give multiples of least, starting from least * least 
+        for repeat in range(least*2, upper_limit+1, least):
+            if repeat in primes:
+                #deleting the multiple if found in list
+                primes.remove(repeat)
+    least = least+1
+ 
+print ("Following are the prime numbers from 2 to {0}: " .format(upper_limit), primes)
